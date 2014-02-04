@@ -14,4 +14,4 @@
 
 2. To enable the plugin, the file ROUNDCUBE_INSTALLATION_DIR/config/main.inc.php has to be edited, adding the string 'latchRC' to the $rcmail_config['plugins] variable.
 
-3. Once the plugin is enabled, it is necessary to configure the "Application ID" and "Secret" to contact with the Latch API. To configure this, edit the file located at ROUNDCUBE_INSTALLATION_DIR/plugins/latchRC/config.inc.php, in the $rcmail_config['latch_appId'] and $rcmail_config['latch_appSecret'] configuration variables.
+3. Once the plugin is enabled, it is necessary to configure the "Application ID" and "Secret" to connect with the Latch API. To configure this, edit the file located at ROUNDCUBE_INSTALLATION_DIR/plugins/latchRC/config.inc.php, and set the $rcmail_config['latch_appId'] and $rcmail_config['latch_appSecret'] configuration variables.
