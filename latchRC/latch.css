@@ -1,0 +1,11 @@
+#sections-table #rcmrowlatch td.section { 
+    background-image: url('icons_latch.png');
+    background-position: 8px 2px;
+    background-size: 20px;
+} 
+
+#sections-table #rcmrowlatch.selected.focused td.section { 
+    background-image: url('icons_latch.png');
+    background-position: 8px -30px;
+    background-size: 20px;
+} 
