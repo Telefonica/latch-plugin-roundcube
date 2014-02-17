@@ -24,6 +24,8 @@ require_once 'sdk/LatchResponse.php';
 require_once 'sdk/Latch.php';
 
 class latchRC extends rcube_plugin {
+    
+    private static $PAIRING_ERROR_MESSAGE = "The account has not been paired succesfully";
 
     /*
      * Instance of the Roundcube Application object
@@ -145,7 +147,7 @@ class latchRC extends rcube_plugin {
 
             return $responseData->{"operations"}->{$appId}->{"status"};
         } else {
-            return "off"; // Prevent blocking user beause of an unexpected response structure
+            return "off"; // Prevent blocking user because of an unexpected response structure
         }
     }
 
@@ -163,6 +165,7 @@ class latchRC extends rcube_plugin {
      */
     function addLatchSection($args) {
         $args['list']['latch'] = array('id' => 'latch', 'section' => 'Latch settings');
+        $this->include_stylesheet("latch.css");
         return $args;
     }
 
@@ -215,7 +218,12 @@ class latchRC extends rcube_plugin {
             // Avoid pairing a user twice
             $pairingToken = $_POST['pairingToken'];
             $accountId = $this->pairAccount($pairingToken);
-            $args['prefs']['latchId'] = $accountId;
+            if (empty($accountId)) {
+                $args['abort'] = true;
+                $args['message'] = self::$PAIRING_ERROR_MESSAGE;
+            } else {
+                $args['prefs']['latchId'] = $accountId;
+            }
         }
         return $args;
     }
