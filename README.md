@@ -2,7 +2,7 @@
 
 
 ##PREREQUISITES
-* RoundCube version 0.8.7 or later.
+* RoundCube version 0.8.7 or later. (Tested up to 1.1.4).
 
 * Curl extensions active in PHP (uncomment **"extension=php_curl.dll"** or"** extension=curl.so"** in Windows or Linux php.ini respectively).
 
